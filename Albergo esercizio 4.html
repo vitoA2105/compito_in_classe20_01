@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Verifica Numero Primo</title>
+    </head>
+    <body>
+        <h1>Verifica Numero Primo</h1>
+        <form>
+            <label for="numero">Inserisci un numero intero:</label>
+            <input type="number" name="numero" id="numero" />
+            <button type="submit" id="btnSubmit">Verifica</button>
+        </form>
+        <div id="messaggio"></div>
+        <script>
+            let btnSubmit = document.getElementById('btnSubmit');
+            let messaggio = document.getElementById('messaggio');
+
+            btnSubmit.addEventListener('click', (e) => {
+                e.preventDefault();
+                let numero = document.getElementById('numero').value;
+
+                if (numero == 1) {
+                    messaggio.innerHTML = 'Il numero inserito non è primo.';
+                } else if (checkPrimo(numero)) {
+                    messaggio.innerHTML = 'Il numero inserito è primo.';
+                } else {
+                    messaggio.innerHTML = 'Il numero inserito non è primo.';
+                }
+            });
+
+            function checkPrimo(numero) {
+                for (let i = 2; i < numero; i++) {
+                    if (numero % i == 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>

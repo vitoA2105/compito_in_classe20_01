@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Indovina il numero</title>
+  </head>
+  <body>
+    <h1>Indovina il numero</h1>
+    <p>Indovina il numero generato dal computer:</p>
+    <input type="text" id="userInput" placeholder="Inserisci un numero...">
+    <button onclick="guessNumber()">Prova</button> 
+    <button onclick="resetGame()">Resetta</button> 
+    <div id="result"></div>
+
+    <script>
+      let numberToGuess;
+      let userInput;
+
+      function randomNumber() { 
+        numberToGuess = Math.floor(Math.random() * 10); // genera un numero intero casuale tra 0 e 10
+        console.log(numberToGuess);
+      }
+      
+      function guessNumber() {
+        userInput = parseInt(document.getElementById("userInput").value); 
+        if (userInput > numberToGuess) {
+          document.getElementById("result").innerHTML = "Numero troppo alto!";
+        } else if (userInput < numberToGuess) {
+          document.getElementById("result").innerHTML = "Numero troppo basso!";
+        } else {
+          document.getElementById("result").innerHTML = "Complimenti, hai vinto!";
+        }
+      }
+
+      function resetGame() {
+        document.getElementById("userInput").value = "";
+        document.getElementById("result").innerHTML = "";
+        randomNumber();
+      }
+
+      randomNumber();
+    </script>
+  </body>
+</html>
